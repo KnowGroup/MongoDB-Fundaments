@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Click Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <button id="click">click</button>
+         <script>
+            function startGame(){
+                let counter = 0;
+                document.querySelector('button').addEventListener('click',()=>{++counter;});
+
+                 return new Promise((resolve, reject) => {
+                    setTimeout(()=>{
+                                    if(counter >=5 ){
+                                       resolve();
+                                    }else{
+                                       reject();
+                                    }
+                                   },2000)
+                                });
+                }
+                
+             startGame()
+                .then(() => alert('You won!'))
+                .catch(() => alert('Sorry You lost.Please Try Again.'));   
+                        
+        </script>
+        <p>
+            Promise is a tool to implement asynchronous code.
+            Implement any code that is set to be executed in future.
+        </p>
+        <img src="../images/StagesOfPromise.PNG" alt="Stages of Promise"/>
+        <img src="../images/PromiseCodeSnip.PNG" alt="Promise Resolve and Reject Code"/>
+    </body>
+</html>
