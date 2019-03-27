@@ -1,8 +1,17 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/users_test');
-mongoose.connection
-        .once('open',() => console.log("Good to go!"))
-        .once('error',e => {
-           console.error("Error",e);
-        });
+before((done) => {
+    mongoose.connect('mongodb://localhost/users_test',{ useNewUrlParser: true });
+    mongoose.connection
+            .once('open',() => {done();})
+            .once('error',e => {
+               console.error("Error",e);
+            });
+});
+
+beforeEach(function (done) {
+    mongoose.connection.collections.users.drop(()=>{
+        //Ready to run new test
+        done();//done call back to ensure the collection cleanup is done
+    });
+});
