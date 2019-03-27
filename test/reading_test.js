@@ -22,5 +22,13 @@ describe('Reading users out of the database', function () {
            assert(users[0]._id.toString() === newUser._id.toString());
            done();
         });
-    });    
+    });
+    
+    it('find user with given id ', function (done) {
+       User.findOne({ _id: newUser._id})
+               .then((user) => {
+                   assert(user.name === 'Mowgli');
+                 done();
+       });
+    });
 });

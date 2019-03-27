@@ -8,6 +8,10 @@
         "client",
         "browser"
     ],
+    "scripts":{
+      "test" : "nodemon --exec mocha -R min",
+      "//": "'test mocha' is used to run mocha using 'npm run test'"
+    },
     "author": "knowgroup",
     "contributors": [],
     "dependencies": {
